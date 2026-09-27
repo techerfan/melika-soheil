@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#16241e">
+<meta name="description" content="ملیکا و سهیل — چهارشنبه ۱۵ مهر ۱۴۰۵، ساعت ۷ شب، باغ تالار لاوین">
+<meta property="og:type" content="website">
+<meta property="og:title" content="جشن عروسی ملیکا و سهیل">
+<meta property="og:description" content="چهارشنبه ۱۵ مهر ۱۴۰۵، ساعت ۷ شب، باغ تالار لاوین">
+<style>html,body{margin:0}body{min-height:100vh}</style>
+<title>جشن عروسی ملیکا و سهیل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600&family=Vazirmatn:wght@300;400;500&family=Amiri:wght@400;700&display=swap">
+<style>
+  /* Single deliberate look: a letterpress suite on forest velvet, set in Persian. */
+  :root {
+    color-scheme: light;
+    --velvet: #16241e;
+    --velvet-2: #1d3029;
+    --paper: #f2efe6;
+    --paper-edge: #e3ddcd;
+    --ink: #24322c;
+    --ink-soft: #5b6860;
+    --foil: #bf9f62;
+    --foil-hi: #ecd9a8;
+    --foil-lo: #8d7140;
+    --blush: #cf9d95;
+    --sage: #8fa396;
+    --nastaliq: "Noto Nastaliq Urdu", "IranNastaliq", "Nastaliq", serif;
+    --naskh: "Amiri", "Noto Naskh Arabic", "Times New Roman", serif;
+    --sans: "Vazirmatn", "Tahoma", "Segoe UI", sans-serif;
+  }
+  html { background: var(--velvet); }
+  body {
+    background:
+      radial-gradient(120% 70% at 50% 0%, var(--velvet-2) 0%, var(--velvet) 60%) fixed,
+      var(--velvet);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.9;
+    padding-inline: 16px;
+    padding-block: 48px 72px;
+    min-height: 100%;
+  }
+  .suite {
+    max-width: 560px;
+    margin: 0 auto;
+    display: grid;
+    gap: 40px;
+  }
+  .card {
+    position: relative;
+    background-color: var(--paper);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .32 0 0 0 0 .25 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    border-radius: 3px;
+    box-shadow:
+      0 1px 0 var(--paper-edge) inset,
+      0 30px 60px -20px rgba(0, 0, 0, .55),
+      0 8px 18px -8px rgba(0, 0, 0, .4);
+    padding: 44px 36px;
+    animation: rise .9s cubic-bezier(.2, .7, .2, 1) both;
+  }
+  .card::before {
+    /* foil-stamped double frame */
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid var(--foil);
+    outline: 1px solid color-mix(in srgb, var(--foil) 45%, transparent);
+    outline-offset: 4px;
+    pointer-events: none;
+  }
+  .card.details { transform: rotate(.8deg); animation-delay: .12s; }
+  @keyframes rise {
+    from { translate: 0 14px; }
+    to { translate: 0 0; }
+  }
+
+  /* ---------- Invitation ---------- */
+  .invite { text-align: center; padding-top: 28px; }
+  .wreath { display: block; width: 100%; max-width: 300px; height: 150px; margin: 0 auto; }
+  .monogram {
+    font-family: var(--nastaliq);
+    font-size: 26px;
+    line-height: 1.6;
+    color: var(--foil-lo);
+    margin-top: -100px;
+    margin-bottom: 50px;
+    position: relative;
+  }
+  .verse {
+    font-family: var(--naskh);
+    font-size: 18px;
+    line-height: 2;
+    color: var(--ink-soft);
+    display: grid;
+    gap: 0;
+    margin: 0 0 6px;
+  }
+  .verse cite {
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 12px;
+    color: var(--foil-lo);
+  }
+  .eyebrow {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .names {
+    font-family: var(--nastaliq);
+    font-weight: 400;
+    font-size: clamp(38px, 10.5vw, 58px);
+    line-height: 1.75;
+    margin: 12px 0 4px;
+    display: grid;
+    justify-items: center;
+  }
+  .amp {
+    font-size: .75em;
+    line-height: 1.2;
+    background: linear-gradient(100deg, var(--foil-lo) 0%, var(--foil) 30%, var(--foil-hi) 48%, var(--foil) 62%, var(--foil-lo) 100%);
+    background-size: 250% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: foil 2.6s ease-out .5s both;
+    padding: 0 .3em;
+  }
+  @keyframes foil { to { background-position: 0 0; } }
+  .request { max-width: 34ch; margin: 0 auto; font-size: 17px; text-wrap: balance; }
+  .rule {
+    width: 64px; height: 1px; border: 0;
+    background: var(--foil);
+    margin: 24px auto;
+  }
+  .when { font-size: 15px; line-height: 2; margin: 0; }
+  .when .day {
+    font-family: var(--naskh);
+    font-weight: 700;
+    font-size: 27px;
+    display: block;
+    line-height: 1.6;
+    margin: 2px 0;
+  }
+  .where { margin-top: 18px; }
+  .where strong { font-family: var(--naskh); font-weight: 700; font-size: 22px; display: block; }
+  .where span { color: var(--ink-soft); }
+  .reception { margin-top: 22px; color: var(--ink-soft); }
+
+  /* ---------- Section heads on insert cards ---------- */
+  .card h2 {
+    font-family: var(--nastaliq);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.8;
+    text-align: center;
+    margin: 0;
+  }
+  .card h2 + .eyebrow { text-align: center; display: block; margin-bottom: 26px; }
+
+  .message {
+    font-family: var(--naskh);
+    font-size: 21px;
+    line-height: 2.1;
+    text-align: center;
+    max-width: 30ch;
+    margin: 0 auto;
+    text-wrap: balance;
+  }
+
+  /* Countdown */
+  .countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    text-align: center;
+    margin: 0 0 30px;
+    padding: 14px 0;
+    border-block: 1px solid color-mix(in srgb, var(--foil) 55%, transparent);
+  }
+  .countdown b {
+    display: block;
+    font-family: var(--naskh);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.4;
+    font-variant-numeric: tabular-nums;
+  }
+  .countdown small { font-size: 12px; color: var(--ink-soft); }
+  .countdown-done { grid-column: 1 / -1; font-family: var(--nastaliq); font-size: 22px; margin: 0; }
+
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 26px; }
+  .btn {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--ink);
+    background: transparent;
+    border: 1px solid var(--ink);
+    border-radius: 0;
+    padding: 9px 18px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .2s, color .2s;
+  }
+  .btn:hover { background: var(--ink); color: var(--paper); }
+  .btn.solid { background: var(--ink); color: var(--paper); }
+  .btn.solid:hover { background: var(--velvet-2); }
+  .btn:focus-visible {
+    outline: 2px solid var(--foil);
+    outline-offset: 3px;
+  }
+
+  .sign-off {
+    text-align: center;
+    color: var(--sage);
+    font-family: var(--nastaliq);
+    font-size: 24px;
+    line-height: 2;
+    margin: 0;
+  }
+
+  @media (max-width: 480px) {
+    body { font-size: 16px; padding-block: 28px 56px; }
+    .card { padding: 40px 24px; }
+    .card.details { transform: none; }
+    .countdown b { font-size: 26px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card, .amp { animation: none; }
+    .amp { background-position: 0 0; }
+  }
+</style>
+</head>
+<body>
+
+<main class="suite" dir="rtl" lang="fa">
+  <!-- The invitation -->
+  <article class="card invite" aria-labelledby="couple">
+    <canvas class="wreath" id="wreath" aria-hidden="true"></canvas>
+    <div class="monogram" id="monogram" aria-hidden="true">م · س</div>
+    <blockquote class="verse" id="verse">
+      <span>هرگزم نقش تو از لوح دل و جان نرود</span>
+      <span>هرگز از یاد من آن سرو خرامان نرود</span>
+      <cite>حافظ</cite>
+    </blockquote>
+    <hr class="rule">
+    <h1 class="names" id="couple">
+      <span id="name1">ملیکا</span>
+      <span class="amp">و</span>
+      <span id="name2">سهیل</span>
+    </h1>
+    <p class="request">با سپاس از خداوند، مقدم گرامی شما را در جشن پیوندمان گرامی می‌داریم</p>
+    <hr class="rule">
+    <p class="when">
+      <span id="weekday">چهارشنبه</span>
+      <span class="day" id="longdate">پانزدهم مهرماه</span>
+      <span id="year">۱۴۰۵</span><br>
+      <span id="timewords">ساعت ۷ شب</span>
+    </p>
+    <div class="where">
+      <strong id="venue">باغ تالار لاوین</strong>
+      <span id="address" hidden></span>
+    </div>
+    <p class="reception">پس از مراسم عقد، شام و جشن برپاست</p>
+  </article>
+
+  <!-- Details insert -->
+  <section class="card details" aria-labelledby="details-h">
+    <h2 id="details-h">به امید دیدار</h2>
+    <span class="eyebrow" id="details-date">چهارشنبه ۱۵ مهر ۱۴۰۵</span>
+
+    <div class="countdown" id="countdown" aria-live="polite">
+      <div><b id="cd-d">—</b><small>روز</small></div>
+      <div><b id="cd-h">—</b><small>ساعت</small></div>
+      <div><b id="cd-m">—</b><small>دقیقه</small></div>
+      <div><b id="cd-s">—</b><small>ثانیه</small></div>
+    </div>
+
+    <p class="message">قدم‌هایتان بر چشم ما.<br>حضور گرمتان، زینت‌بخش شبی است که زندگی مشترکمان را آغاز می‌کنیم.</p>
+    <div class="actions">
+      <a class="btn" id="map-link" href="#" target="_blank" rel="noopener">مسیریابی با نشان</a>
+      <a class="btn" id="cal-link" href="#" target="_blank" rel="noopener">افزودن به تقویم گوگل</a>
+    </div>
+  </section>
+
+  <p class="sign-off" id="signoff">با مهر، ملیکا و سهیل</p>
+</main>
+
+<script>
+  /* ============================================================
+     Edit this block with your own details. Everything on the
+     card is rendered from it. Dates are Gregorian (for the
+     countdown and calendar); the card shows them in the Persian
+     (Jalali) calendar automatically.
+     ============================================================ */
+  const CONFIG = {
+    partner1: "ملیکا",
+    partner2: "سهیل",
+    // Local date and time of the ceremony (YYYY-MM-DDTHH:MM, Gregorian)
+    ceremony: "2026-10-07T19:00",   // = چهارشنبه ۱۵ مهر ۱۴۰۵، ساعت ۷ شب
+    endsAt:   "2026-10-08T00:30",
+    timezone: "Asia/Tehran",
+    venue: "باغ تالار لاوین",
+    address: "",                     // optional street address line
+    mapUrl: "https://nshn.ir/e8rbZBt6_xwiUw",
+  };
+
+  const $ = (id) => document.getElementById(id);
+  const fa = (v) => String(v).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
+  const UNIT_ORD = ["", "یکم", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم"];
+  const TEEN_ORD = ["دهم", "یازدهم", "دوازدهم", "سیزدهم", "چهاردهم", "پانزدهم", "شانزدهم", "هفدهم", "هجدهم", "نوزدهم"];
+  const ordinal = (n) => {
+    if (n < 10) return UNIT_ORD[n];
+    if (n < 20) return TEEN_ORD[n - 10];
+    const tens = n < 30 ? "بیست" : "سی";
+    const u = n % 10;
+    return u ? tens + " و " + UNIT_ORD[u] : (n === 20 ? "بیستم" : "سی‌ام");
+  };
+  const MONTHS = ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"];
+  const DAYS = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه"];
+
+  function parseLocal(s) {
+    const [d, t = "00:00"] = s.split("T");
+    const [y, m, day] = d.split("-").map(Number);
+    const [hh, mm] = t.split(":").map(Number);
+    return { y, m, day, hh, mm };
+  }
+  // Gregorian calendar date -> Jalali {y, m, d, dow}
+  function toJalali(s) {
+    const p = parseLocal(s);
+    const date = new Date(Date.UTC(p.y, p.m - 1, p.day, 12));
+    const f = new Intl.DateTimeFormat("en-US-u-ca-persian", { timeZone: "UTC", year: "numeric", month: "numeric", day: "numeric" });
+    const parts = Object.fromEntries(f.formatToParts(date).map((x) => [x.type, x.value]));
+    return { y: parseInt(parts.year, 10), m: parseInt(parts.month, 10), d: parseInt(parts.day, 10), dow: date.getUTCDay() };
+  }
+  // Convert a wall-clock time in CONFIG.timezone to a real instant.
+  function zonedInstant(s, tz) {
+    const p = parseLocal(s);
+    const guess = Date.UTC(p.y, p.m - 1, p.day, p.hh, p.mm);
+    try {
+      const f = new Intl.DateTimeFormat("en-US", { timeZone: tz, hourCycle: "h23", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" });
+      const parts = Object.fromEntries(f.formatToParts(new Date(guess)).map((x) => [x.type, x.value]));
+      const asZone = Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour, +parts.minute);
+      return new Date(guess - (asZone - guess));
+    } catch { return new Date(guess); }
+  }
+  // 19:00 -> "۷ شب", 16:30 -> "۴:۳۰ بعدازظهر"
+  function clock(hh, mm) {
+    const h12 = ((hh + 11) % 12) + 1;
+    const part = hh < 12 ? "صبح" : hh < 17 ? "بعدازظهر" : hh < 19 ? "عصر" : "شب";
+    return fa(mm ? h12 + ":" + String(mm).padStart(2, "0") : h12) + " " + part;
+  }
+  function initial(name) { return name.trim().charAt(0); }
+
+  function render() {
+    const c = parseLocal(CONFIG.ceremony);
+    const j = toJalali(CONFIG.ceremony);
+    const couple = CONFIG.partner1 + " و " + CONFIG.partner2;
+    $("name1").textContent = CONFIG.partner1;
+    $("name2").textContent = CONFIG.partner2;
+    $("monogram").textContent = initial(CONFIG.partner1) + " · " + initial(CONFIG.partner2);
+    $("weekday").textContent = DAYS[j.dow];
+    $("longdate").textContent = ordinal(j.d) + " " + MONTHS[j.m - 1] + "‌ماه";
+    $("year").textContent = fa(j.y);
+    $("timewords").textContent = "ساعت " + clock(c.hh, c.mm);
+    $("venue").textContent = CONFIG.venue;
+    $("address").textContent = CONFIG.address;
+    $("address").hidden = !CONFIG.address;
+    $("details-date").textContent = DAYS[j.dow] + " " + fa(j.d) + " " + MONTHS[j.m - 1] + " " + fa(j.y) + " · " + CONFIG.venue;
+    $("signoff").textContent = "با مهر، " + couple;
+    document.title = "جشن عروسی " + couple;
+
+
+    $("map-link").href = CONFIG.mapUrl;
+    const stamp = (s) => s.replace(/[-:]/g, "") + "00";
+    const cal = new URL("https://calendar.google.com/calendar/render");
+    cal.searchParams.set("action", "TEMPLATE");
+    cal.searchParams.set("text", "جشن عروسی " + couple);
+    cal.searchParams.set("dates", stamp(CONFIG.ceremony) + "/" + stamp(CONFIG.endsAt));
+    cal.searchParams.set("ctz", CONFIG.timezone);
+    cal.searchParams.set("location", [CONFIG.venue, CONFIG.address].filter(Boolean).join("، "));
+    cal.searchParams.set("details", "مسیریابی: " + CONFIG.mapUrl);
+    $("cal-link").href = cal.toString();
+  }
+
+  /* Countdown */
+  let target;
+  function tick() {
+    const ms = target - Date.now();
+    if (ms <= 0) {
+      $("countdown").innerHTML = '<p class="countdown-done">امروز روز جشن است</p>';
+      return false;
+    }
+    const s = Math.floor(ms / 1000);
+    $("cd-d").textContent = fa(Math.floor(s / 86400));
+    $("cd-h").textContent = fa(String(Math.floor(s / 3600) % 24).padStart(2, "0"));
+    $("cd-m").textContent = fa(String(Math.floor(s / 60) % 60).padStart(2, "0"));
+    $("cd-s").textContent = fa(String(s % 60).padStart(2, "0"));
+    return true;
+  }
+
+  /* Foil olive wreath, drawn once to canvas */
+  function drawWreath() {
+    const cv = $("wreath");
+    const dpr = Math.min(window.devicePixelRatio || 1, 3);
+    const w = cv.clientWidth, h = cv.clientHeight;
+    cv.width = w * dpr; cv.height = h * dpr;
+    const ctx = cv.getContext("2d");
+    ctx.scale(dpr, dpr);
+    const g = ctx.createLinearGradient(0, 0, w, h);
+    g.addColorStop(0, "#8d7140");
+    g.addColorStop(.35, "#bf9f62");
+    g.addColorStop(.5, "#ecd9a8");
+    g.addColorStop(.65, "#bf9f62");
+    g.addColorStop(1, "#8d7140");
+    const cx = w / 2, cy = h * .5, R = Math.min(w * .36, h * .62);
+
+    function branch(dir) {
+      const a0 = Math.PI / 2 + dir * .18, a1 = Math.PI / 2 + dir * (Math.PI * .92);
+      const pt = (t) => {
+        const a = a0 + (a1 - a0) * t;
+        return [cx + Math.cos(a) * R, cy + Math.sin(a) * R * .72];
+      };
+      ctx.strokeStyle = g; ctx.lineWidth = 1.1; ctx.lineCap = "round";
+      ctx.beginPath();
+      for (let i = 0; i <= 60; i++) { const [x, y] = pt(i / 60); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+      ctx.stroke();
+      const leaves = 11;
+      for (let i = 1; i <= leaves; i++) {
+        const t = i / (leaves + .6);
+        const [x, y] = pt(t);
+        const [x2, y2] = pt(Math.min(t + .01, 1));
+        const tangent = Math.atan2(y2 - y, x2 - x);
+        const size = 10 + 5 * Math.sin(t * Math.PI);
+        for (const side of [-1, 1]) {
+          ctx.save();
+          ctx.translate(x, y);
+          ctx.rotate(tangent + side * .75);
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.quadraticCurveTo(size * .5, -size * .32, size, 0);
+          ctx.quadraticCurveTo(size * .5, size * .32, 0, 0);
+          if ((i + (side > 0 ? 1 : 0)) % 3 === 0) { ctx.fillStyle = g; ctx.fill(); }
+          else { ctx.lineWidth = .9; ctx.stroke(); }
+          ctx.restore();
+        }
+        if (i % 4 === 2) {
+          ctx.save();
+          ctx.translate(x, y);
+          ctx.rotate(tangent - Math.PI / 2 * dir);
+          ctx.beginPath();
+          ctx.ellipse(0, 7, 2.6, 3.6, 0, 0, Math.PI * 2);
+          ctx.fillStyle = "#cf9d95";
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+    }
+    branch(1); branch(-1);
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(cx, cy + R * .72, 2.4, 0, Math.PI * 2); ctx.fill();
+  }
+
+  document.documentElement.lang = "fa";
+  document.documentElement.dir = "rtl";
+  render();
+  target = zonedInstant(CONFIG.ceremony, CONFIG.timezone).getTime();
+  if (tick()) { const iv = setInterval(() => { if (!tick()) clearInterval(iv); }, 1000); }
+  requestAnimationFrame(drawWreath);
+  let rt; window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(drawWreath, 120); });
+</script>
+</body>
+</html>
