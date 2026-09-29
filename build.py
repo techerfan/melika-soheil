@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Build the wedding card from src/template.html.
 
-Inlines every {{name}} placeholder with src/img/<name>.jpg as a data URI and writes:
+Inlines every {{name}} placeholder with src/img/<name>.png (or .jpg) as a data URI and writes:
   index.html       - page body for the Claude artifact (the publisher adds the skeleton)
   docs/index.html  - standalone page served by GitHub Pages
 """
+import argparse
 import base64
 import pathlib
 import re
@@ -26,19 +27,28 @@ HEAD = """<!doctype html>
 
 
 def data_uri(name: str) -> str:
+    """Prefer the keyed PNG (transparent background) over the raw JPEG crop."""
+    png = SRC / "img" / f"{name}.png"
+    if png.exists():
+        return "data:image/png;base64," + base64.b64encode(png.read_bytes()).decode()
     raw = (SRC / "img" / f"{name}.jpg").read_bytes()
     return "data:image/jpeg;base64," + base64.b64encode(raw).decode()
 
 
 def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--out", type=pathlib.Path, default=ROOT, help="where index.html and docs/ are written")
+    a = ap.parse_args()
+
     page = (SRC / "template.html").read_text(encoding="utf-8")
     page = re.sub(r"\{\{([\w-]+)\}\}", lambda m: data_uri(m.group(1)), page)
-    (ROOT / "index.html").write_text(page, encoding="utf-8")
+    a.out.mkdir(parents=True, exist_ok=True)
+    (a.out / "index.html").write_text(page, encoding="utf-8")
 
     head, sep, body = page.partition("</style>\n")
     standalone = HEAD + head + sep + "</head>\n<body>\n" + body + "</body>\n</html>\n"
-    (ROOT / "docs").mkdir(exist_ok=True)
-    (ROOT / "docs" / "index.html").write_text(standalone, encoding="utf-8")
+    (a.out / "docs").mkdir(exist_ok=True)
+    (a.out / "docs" / "index.html").write_text(standalone, encoding="utf-8")
 
 
 if __name__ == "__main__":
