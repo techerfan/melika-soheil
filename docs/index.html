@@ -170,8 +170,16 @@
   .divider.last { margin-top: calc(18 * var(--u)); margin-bottom: 0; }
 
   @media (max-width: 540px) {
+    /* Phones: the card fills the screen; extra height spreads evenly between the sections. */
     body { padding: 0; }
-    .card { max-width: none; box-shadow: none; }
+    .card {
+      max-width: none; box-shadow: none;
+      min-height: 100vh; min-height: 100dvh;
+      display: flex; flex-direction: column;
+    }
+    .inner { flex: 1; display: flex; flex-direction: column; }
+    .hero { flex: none; }
+    .content { flex: 1; align-content: space-evenly; }
   }
 </style>
 </head>
