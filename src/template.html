@@ -1,0 +1,341 @@
+<title>جشن عقد سهیل و ملیکا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Vazirmatn:wght@400;500;700;800&display=swap">
+<style>
+  /* Single warm-paper look, matched to the approved mockup. */
+  :root {
+    color-scheme: light;
+    --page: #e3d5c7;
+    --paper: #f0e6dc;
+    --paper-edge: #e9dbcd;
+    --ink: #3c291b;
+    --ink-soft: #5e4a3c;
+    --gold: #b8946c;
+    --line: #cdb49c;
+    --box: #cdbdae;
+    --btn: #6e5749;
+    --btn-ink: #fbf5ee;
+    --heart: #7e624d;
+    --latin: "Playfair Display", "Didot", Georgia, serif;
+    --fa: "Vazirmatn", "Tahoma", "Segoe UI", sans-serif;
+  }
+  html { background: var(--page); }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--fa);
+    padding-block: 32px;
+    padding-inline: 16px;
+  }
+  .card {
+    /* Design grid is the 853px-wide mockup; 1u = one mockup pixel. */
+    container-type: inline-size;
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto;
+    background:
+      radial-gradient(90% 60% at 50% 45%, var(--paper) 0%, var(--paper) 55%, var(--paper-edge) 100%),
+      var(--paper);
+    box-shadow: 0 24px 60px -24px rgba(60, 41, 27, .45);
+    overflow: hidden;
+    text-align: center;
+  }
+  .inner {
+    --u: calc(100cqw / 853);
+    position: relative;
+    padding-bottom: calc(70 * var(--u));
+  }
+  /* thin frame that continues the arch baked into the header photo */
+  .inner::before {
+    content: "";
+    position: absolute;
+    top: calc(380 * var(--u));
+    left: calc(18 * var(--u));
+    right: calc(20 * var(--u));
+    bottom: calc(25 * var(--u));
+    border: 1px solid var(--line);
+    border-top: 0;
+    pointer-events: none;
+  }
+  .hero {
+    display: block; width: 100%; height: auto;
+    -webkit-mask-image: linear-gradient(to bottom, #000 97%, transparent);
+            mask-image: linear-gradient(to bottom, #000 97%, transparent);
+  }
+  .decor { position: absolute; pointer-events: none; user-select: none; }
+  .fl-l  { top: calc(400 * var(--u)); left: 0; width: calc(90 * var(--u)); --side: 0;
+           -webkit-mask-image: radial-gradient(100% 60% at var(--side) 50%, #000 55%, transparent 100%);
+                   mask-image: radial-gradient(100% 60% at var(--side) 50%, #000 55%, transparent 100%); }
+  .fl-r  { top: calc(400 * var(--u)); right: 0; width: calc(90 * var(--u)); --side: 100%;
+           -webkit-mask-image: radial-gradient(100% 60% at var(--side) 50%, #000 55%, transparent 100%);
+                   mask-image: radial-gradient(100% 60% at var(--side) 50%, #000 55%, transparent 100%); }
+  .fl-bl { bottom: 0; left: 0; width: calc(200 * var(--u));
+           -webkit-mask-image: radial-gradient(130% 110% at 0 100%, #000 72%, transparent 100%);
+                   mask-image: radial-gradient(130% 110% at 0 100%, #000 72%, transparent 100%); }
+  .fl-br { bottom: 0; right: 0; width: calc(160 * var(--u));
+           -webkit-mask-image: radial-gradient(130% 110% at 100% 100%, #000 72%, transparent 100%);
+                   mask-image: radial-gradient(130% 110% at 100% 100%, #000 72%, transparent 100%); }
+
+  .content {
+    position: relative;
+    padding-inline: calc(110 * var(--u));
+    display: grid;
+    justify-items: center;
+  }
+  .names {
+    direction: ltr;
+    font-family: var(--latin);
+    font-weight: 400;
+    font-size: clamp(30px, calc(76 * var(--u)), 46px);
+    line-height: 1.15;
+    letter-spacing: -.005em;
+    margin: calc(10 * var(--u)) 0 0;
+    white-space: nowrap;
+  }
+  .names .amp { font-style: italic; color: var(--gold); padding: 0 .12em; font-size: .82em; }
+  .tagline { font-size: clamp(15px, calc(22 * var(--u)), 17px); margin: calc(14 * var(--u)) 0 0; color: var(--ink-soft); }
+
+  .divider {
+    display: flex; align-items: center; justify-content: center;
+    gap: calc(14 * var(--u));
+    color: var(--heart);
+    margin-block: calc(28 * var(--u));
+  }
+  .divider::before, .divider::after {
+    content: ""; height: 1px; width: calc(100 * var(--u)); min-width: 48px;
+    background: var(--line);
+  }
+  .divider svg { width: 12px; height: 12px; }
+
+  .message { font-size: clamp(15px, calc(22 * var(--u)), 17px); line-height: 2; margin: 0; }
+
+  .when {
+    display: grid; grid-template-columns: auto auto auto; align-items: center;
+    column-gap: calc(40 * var(--u));
+    margin-top: calc(24 * var(--u));
+  }
+  .sprig {
+    width: calc(66 * var(--u)); min-width: 40px; height: auto;
+    /* lift the crop's beige to white so multiply leaves only the line art */
+    filter: brightness(1.13) contrast(1.2);
+    mix-blend-mode: multiply;
+  }
+  .date { font-weight: 800; font-size: clamp(26px, calc(46 * var(--u)), 32px); line-height: 1.4; margin: 0; }
+  .time { font-weight: 700; font-size: clamp(18px, calc(28 * var(--u)), 22px); margin: 0; }
+
+  .countdown {
+    direction: ltr;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: calc(14 * var(--u));
+    width: calc(560 * var(--u));
+    max-width: 100%;
+    margin-top: calc(28 * var(--u));
+  }
+  .countdown div {
+    border: 1px solid var(--box);
+    border-radius: 8px;
+    background: rgba(255, 250, 244, .35);
+    padding: calc(16 * var(--u)) 0 calc(14 * var(--u));
+    display: grid; gap: 4px;
+  }
+  .countdown b {
+    font-weight: 500;
+    font-size: clamp(18px, calc(30 * var(--u)), 22px);
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-soft);
+  }
+  .countdown small { font-size: clamp(12px, calc(18 * var(--u)), 14px); color: var(--ink-soft); }
+
+  .place-label { display: flex; align-items: center; gap: 6px; font-size: clamp(13px, calc(19 * var(--u)), 15px); color: var(--ink-soft); }
+  .place-label svg { width: 14px; height: 14px; }
+  .venue { font-weight: 800; font-size: clamp(20px, calc(32 * var(--u)), 24px); margin: calc(6 * var(--u)) 0 0; }
+
+  .pill {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    width: calc(210 * var(--u)); min-width: 180px;
+    padding: 9px 20px;
+    border-radius: 999px;
+    font: 500 clamp(14px, calc(19 * var(--u)), 15px) var(--fa);
+    text-decoration: none;
+    cursor: pointer;
+    transition: filter .2s, background .2s;
+  }
+  .pill svg { width: 16px; height: 16px; flex: none; }
+  .route { background: var(--btn); color: var(--btn-ink); border: 1px solid var(--btn); margin-top: calc(18 * var(--u)); }
+  .route:hover { filter: brightness(1.1); }
+  .music { background: transparent; color: var(--ink); border: 1px solid var(--line); margin-top: calc(16 * var(--u)); }
+  .music:hover, .music[aria-pressed="true"] { background: rgba(255, 250, 244, .55); }
+  .pill:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .footer { font-size: clamp(13px, calc(19 * var(--u)), 15px); color: var(--ink-soft); margin: calc(22 * var(--u)) 0 0; }
+  .divider.last { margin-top: calc(18 * var(--u)); margin-bottom: 0; }
+
+  @media (max-width: 540px) {
+    body { padding: 0; }
+    .card { max-width: none; box-shadow: none; }
+  }
+</style>
+
+<main class="card" dir="rtl" lang="fa">
+  <div class="inner">
+    <img class="hero" src="{{hero}}" alt="حلقه‌های ازدواج کنار گل‌های سفید؛ به نام عشق" width="853" height="392">
+    <img class="decor fl-l" src="{{fl-l}}" alt="" width="90" height="130">
+    <img class="decor fl-r" src="{{fl-r}}" alt="" width="90" height="130">
+    <img class="decor fl-bl" src="{{fl-bl}}" alt="" width="200" height="320">
+    <img class="decor fl-br" src="{{fl-br}}" alt="" width="160" height="240">
+
+    <div class="content">
+      <h1 class="names" id="names">Soheil <span class="amp">&amp;</span> Melika</h1>
+      <p class="tagline">با عشق، آغاز یک قصه‌ی تازه</p>
+
+      <div class="divider" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.6h2c.7-1.4 2.2-2.6 4.3-2.6 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg></div>
+
+      <p class="message">از حضور گرم و صمیمانه‌ی شما<br>در جشن عقدمان خوشحال خواهیم شد.</p>
+
+      <div class="when">
+        <img class="sprig" src="{{sprig-r}}" alt="" width="70" height="70">
+        <div>
+          <p class="date" id="date">۱۵ مهر</p>
+          <p class="time" id="time">ساعت ۷ شب</p>
+        </div>
+        <img class="sprig" src="{{sprig-l}}" alt="" width="70" height="70">
+      </div>
+
+      <div class="countdown" id="countdown" aria-label="زمان باقی‌مانده تا جشن">
+        <div><b id="cd-d">--</b><small>روز</small></div>
+        <div><b id="cd-h">--</b><small>ساعت</small></div>
+        <div><b id="cd-m">--</b><small>دقیقه</small></div>
+        <div><b id="cd-s">--</b><small>ثانیه</small></div>
+      </div>
+
+      <div class="divider" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.6h2c.7-1.4 2.2-2.6 4.3-2.6 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg></div>
+
+      <div class="place-label">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+        محل برگزاری
+      </div>
+      <p class="venue" id="venue">باغ تالار لاوین</p>
+
+      <a class="pill route" id="route" href="#" target="_blank" rel="noopener">
+        مشاهده مسیر
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.4 2.6 2.9 9.8c-1.2.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.4-1.5zM9.9 14.3l-.4 4.3-1.4-4.6 10.7-6.8-8.9 7.1z"/></svg>
+      </a>
+      <button class="pill music" id="music" type="button" aria-pressed="false">
+        <span id="music-label">موسیقی روشن</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 3v12.3A3.5 3.5 0 1 0 11 18V8h8v5.3A3.5 3.5 0 1 0 21 16V3H9z"/></svg>
+      </button>
+
+      <p class="footer">با عشق، منتظر دیدار شما هستیم</p>
+      <div class="divider last" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.6h2c.7-1.4 2.2-2.6 4.3-2.6 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg></div>
+    </div>
+  </div>
+</main>
+
+<script>
+  /* ============================================================
+     Edit this block with your own details.
+     ============================================================ */
+  const CONFIG = {
+    // Local date and time of the ceremony (YYYY-MM-DDTHH:MM, Gregorian)
+    ceremony: "2026-10-07T19:00",   // = چهارشنبه ۱۵ مهر ۱۴۰۵، ساعت ۷ شب
+    timezone: "Asia/Tehran",
+    mapUrl: "https://nshn.ir/e8rbZBt6_xwiUw",
+    // Optional: URL of an mp3 to play instead of the built-in music-box tune
+    musicUrl: "",
+  };
+
+  const $ = (id) => document.getElementById(id);
+  const fa = (v) => String(v).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d]);
+
+  function parseLocal(s) {
+    const [d, t = "00:00"] = s.split("T");
+    const [y, m, day] = d.split("-").map(Number);
+    const [hh, mm] = t.split(":").map(Number);
+    return { y, m, day, hh, mm };
+  }
+  // Convert a wall-clock time in CONFIG.timezone to a real instant.
+  function zonedInstant(s, tz) {
+    const p = parseLocal(s);
+    const guess = Date.UTC(p.y, p.m - 1, p.day, p.hh, p.mm);
+    try {
+      const f = new Intl.DateTimeFormat("en-US", { timeZone: tz, hourCycle: "h23", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit" });
+      const parts = Object.fromEntries(f.formatToParts(new Date(guess)).map((x) => [x.type, x.value]));
+      const asZone = Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour, +parts.minute);
+      return new Date(guess - (asZone - guess));
+    } catch { return new Date(guess); }
+  }
+
+  /* Countdown */
+  const target = zonedInstant(CONFIG.ceremony, CONFIG.timezone).getTime();
+  function tick() {
+    const s = Math.max(0, Math.floor((target - Date.now()) / 1000));
+    $("cd-d").textContent = fa(Math.floor(s / 86400));
+    $("cd-h").textContent = fa(Math.floor(s / 3600) % 24);
+    $("cd-m").textContent = fa(Math.floor(s / 60) % 60);
+    $("cd-s").textContent = fa(s % 60);
+    return s > 0;
+  }
+  if (tick()) { const iv = setInterval(() => { if (!tick()) clearInterval(iv); }, 1000); }
+
+  $("route").href = CONFIG.mapUrl;
+
+  /* Music: an mp3 if one is configured, otherwise a soft music-box loop made in the browser */
+  const music = (() => {
+    if (CONFIG.musicUrl) {
+      const a = new Audio(CONFIG.musicUrl);
+      a.loop = true;
+      return { start: () => a.play(), stop: () => a.pause() };
+    }
+    let ctx, master, timer, step = 0, next = 0;
+    // Gentle arpeggios over C – Am – F – G
+    const chords = [[60, 64, 67, 72], [57, 60, 64, 69], [53, 57, 60, 65], [55, 59, 62, 67]];
+    const pattern = [0, 1, 2, 3, 2, 1, 2, 3];
+    const hz = (n) => 440 * Math.pow(2, (n - 69) / 12);
+    function note(n, t, len, vol) {
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = "triangle";
+      o.frequency.value = hz(n);
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(vol, t + .01);
+      g.gain.exponentialRampToValueAtTime(.0001, t + len);
+      o.connect(g).connect(master);
+      o.start(t); o.stop(t + len + .05);
+    }
+    function schedule() {
+      while (next < ctx.currentTime + .3) {
+        const chord = chords[Math.floor(step / 8) % chords.length];
+        note(chord[pattern[step % 8]] + 12, next, 1.6, .16);
+        if (step % 8 === 0) note(chord[0] - 12, next, 3, .1);
+        next += .34; step++;
+      }
+    }
+    return {
+      start() {
+        ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+        if (!master) {
+          master = ctx.createGain(); master.gain.value = .7;
+          const delay = ctx.createDelay(), fb = ctx.createGain(), wet = ctx.createGain();
+          delay.delayTime.value = .34; fb.gain.value = .3; wet.gain.value = .25;
+          master.connect(ctx.destination);
+          master.connect(delay); delay.connect(fb).connect(delay); delay.connect(wet).connect(ctx.destination);
+        }
+        return ctx.resume().then(() => { next = ctx.currentTime + .05; timer = setInterval(schedule, 80); schedule(); });
+      },
+      stop() { clearInterval(timer); if (ctx) ctx.suspend(); },
+    };
+  })();
+
+  const btn = $("music");
+  btn.addEventListener("click", async () => {
+    const on = btn.getAttribute("aria-pressed") !== "true";
+    try {
+      if (on) await music.start(); else music.stop();
+      btn.setAttribute("aria-pressed", String(on));
+      $("music-label").textContent = on ? "موسیقی خاموش" : "موسیقی روشن";
+    } catch { /* playback refused: leave the button as it was */ }
+  });
+</script>
