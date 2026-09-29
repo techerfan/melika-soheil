@@ -33,7 +33,7 @@
     /* Design grid is the 853px-wide mockup; 1u = one mockup pixel. */
     container-type: inline-size;
     position: relative;
-    max-width: 500px;
+    max-width: 560px;
     margin: 0 auto;
     background:
       radial-gradient(90% 60% at 50% 45%, var(--paper) 0%, var(--paper) 55%, var(--paper-edge) 100%),
@@ -45,16 +45,16 @@
   .inner {
     --u: calc(100cqw / 853);
     position: relative;
-    padding-bottom: calc(70 * var(--u));
+    padding-bottom: calc(60 * var(--u));
   }
   /* thin frame that continues the arch baked into the header photo */
   .inner::before {
     content: "";
     position: absolute;
     top: calc(380 * var(--u));
-    left: calc(18 * var(--u));
-    right: calc(20 * var(--u));
-    bottom: calc(25 * var(--u));
+    left: calc(18.5 * var(--u));
+    right: calc(19.5 * var(--u));
+    bottom: calc(24 * var(--u));
     border: 1px solid var(--line);
     border-top: 0;
     pointer-events: none;
@@ -64,7 +64,7 @@
     -webkit-mask-image: linear-gradient(to bottom, #000 97%, transparent);
             mask-image: linear-gradient(to bottom, #000 97%, transparent);
   }
-  .decor { position: absolute; pointer-events: none; user-select: none; }
+  .decor { position: absolute; height: auto; pointer-events: none; user-select: none; }
   .fl-l  { top: calc(400 * var(--u)); left: 0; width: calc(90 * var(--u)); --side: 0;
            -webkit-mask-image: radial-gradient(100% 60% at var(--side) 50%, #000 55%, transparent 100%);
                    mask-image: radial-gradient(100% 60% at var(--side) 50%, #000 55%, transparent 100%); }
@@ -167,8 +167,6 @@
   .pill svg { width: 16px; height: 16px; flex: none; }
   .route { background: var(--btn); color: var(--btn-ink); border: 1px solid var(--btn); margin-top: calc(18 * var(--u)); }
   .route:hover { filter: brightness(1.1); }
-  .music { background: transparent; color: var(--ink); border: 1px solid var(--line); margin-top: calc(16 * var(--u)); }
-  .music:hover, .music[aria-pressed="true"] { background: rgba(255, 250, 244, .55); }
   .pill:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
   .footer { font-size: clamp(13px, calc(19 * var(--u)), 15px); color: var(--ink-soft); margin: calc(22 * var(--u)) 0 0; }
@@ -224,10 +222,6 @@
         مشاهده مسیر
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.4 2.6 2.9 9.8c-1.2.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.4-1.5zM9.9 14.3l-.4 4.3-1.4-4.6 10.7-6.8-8.9 7.1z"/></svg>
       </a>
-      <button class="pill music" id="music" type="button" aria-pressed="false">
-        <span id="music-label">موسیقی روشن</span>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 3v12.3A3.5 3.5 0 1 0 11 18V8h8v5.3A3.5 3.5 0 1 0 21 16V3H9z"/></svg>
-      </button>
 
       <p class="footer">با عشق، منتظر دیدار شما هستیم</p>
       <div class="divider last" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.6h2c.7-1.4 2.2-2.6 4.3-2.6 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg></div>
@@ -244,8 +238,6 @@
     ceremony: "2026-10-07T19:00",   // = چهارشنبه ۱۵ مهر ۱۴۰۵، ساعت ۷ شب
     timezone: "Asia/Tehran",
     mapUrl: "https://nshn.ir/e8rbZBt6_xwiUw",
-    // Optional: URL of an mp3 to play instead of the built-in music-box tune
-    musicUrl: "",
   };
 
   const $ = (id) => document.getElementById(id);
@@ -283,59 +275,4 @@
 
   $("route").href = CONFIG.mapUrl;
 
-  /* Music: an mp3 if one is configured, otherwise a soft music-box loop made in the browser */
-  const music = (() => {
-    if (CONFIG.musicUrl) {
-      const a = new Audio(CONFIG.musicUrl);
-      a.loop = true;
-      return { start: () => a.play(), stop: () => a.pause() };
-    }
-    let ctx, master, timer, step = 0, next = 0;
-    // Gentle arpeggios over C – Am – F – G
-    const chords = [[60, 64, 67, 72], [57, 60, 64, 69], [53, 57, 60, 65], [55, 59, 62, 67]];
-    const pattern = [0, 1, 2, 3, 2, 1, 2, 3];
-    const hz = (n) => 440 * Math.pow(2, (n - 69) / 12);
-    function note(n, t, len, vol) {
-      const o = ctx.createOscillator(), g = ctx.createGain();
-      o.type = "triangle";
-      o.frequency.value = hz(n);
-      g.gain.setValueAtTime(0, t);
-      g.gain.linearRampToValueAtTime(vol, t + .01);
-      g.gain.exponentialRampToValueAtTime(.0001, t + len);
-      o.connect(g).connect(master);
-      o.start(t); o.stop(t + len + .05);
-    }
-    function schedule() {
-      while (next < ctx.currentTime + .3) {
-        const chord = chords[Math.floor(step / 8) % chords.length];
-        note(chord[pattern[step % 8]] + 12, next, 1.6, .16);
-        if (step % 8 === 0) note(chord[0] - 12, next, 3, .1);
-        next += .34; step++;
-      }
-    }
-    return {
-      start() {
-        ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
-        if (!master) {
-          master = ctx.createGain(); master.gain.value = .7;
-          const delay = ctx.createDelay(), fb = ctx.createGain(), wet = ctx.createGain();
-          delay.delayTime.value = .34; fb.gain.value = .3; wet.gain.value = .25;
-          master.connect(ctx.destination);
-          master.connect(delay); delay.connect(fb).connect(delay); delay.connect(wet).connect(ctx.destination);
-        }
-        return ctx.resume().then(() => { next = ctx.currentTime + .05; timer = setInterval(schedule, 80); schedule(); });
-      },
-      stop() { clearInterval(timer); if (ctx) ctx.suspend(); },
-    };
-  })();
-
-  const btn = $("music");
-  btn.addEventListener("click", async () => {
-    const on = btn.getAttribute("aria-pressed") !== "true";
-    try {
-      if (on) await music.start(); else music.stop();
-      btn.setAttribute("aria-pressed", String(on));
-      $("music-label").textContent = on ? "موسیقی خاموش" : "موسیقی روشن";
-    } catch { /* playback refused: leave the button as it was */ }
-  });
 </script>
